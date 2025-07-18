@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenSource Chile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0a0a0a 100%);
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container {
+            position: relative;
+            margin-bottom: 60px;
+            perspective: 1000px;
+        }
+
+        .logo {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite, logoFloat 6s ease-in-out infinite, logoRotate 20s linear infinite;
+            box-shadow: 
+                0 0 60px rgba(255, 107, 107, 0.3),
+                0 0 100px rgba(78, 205, 196, 0.2),
+                0 0 140px rgba(69, 183, 209, 0.1),
+                inset 0 0 60px rgba(255, 255, 255, 0.1);
+            filter: blur(0px);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotateY(15deg) rotateX(10deg);
+            box-shadow: 
+                0 0 80px rgba(255, 107, 107, 0.5),
+                0 0 120px rgba(78, 205, 196, 0.4),
+                0 0 160px rgba(69, 183, 209, 0.3);
+            filter: blur(0px) brightness(1.2);
+        }
+
+        .logo-glow {
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            right: -50px;
+            bottom: -50px;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulseGlow 4s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .title {
+            font-size: clamp(4rem, 12vw, 12rem);
+            font-weight: 100;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0, #e0e0e0, #ffffff);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShimmer 6s ease-in-out infinite, titleFloat 8s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 3;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-top: 20px;
+            animation: subtitleFade 3s ease-in-out infinite;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: particleFloat 10s linear infinite;
+        }
+
+        .geometric-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .geometric-shape {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            animation: geometricRotate 30s linear infinite;
+        }
+
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 10%;
+            transform: rotate(45deg);
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 15%;
+            border-radius: 50%;
+            animation-delay: -10s;
+        }
+
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation-delay: -20s;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) rotateY(0deg); }
+            50% { transform: translateY(-20px) rotateY(5deg); }
+        }
+
+        @keyframes logoRotate {
+            0% { transform: rotateZ(0deg); }
+            100% { transform: rotateZ(360deg); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes subtitleFade {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 0.9; }
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes geometricRotate {
+            0% { transform: rotate(0deg); opacity: 0.05; }
+            50% { opacity: 0.1; }
+            100% { transform: rotate(360deg); opacity: 0.05; }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .title {
+                font-size: clamp(3rem, 15vw, 8rem);
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: cursorPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes cursorPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.5); opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+    <div class="geometric-bg">
+        <div class="geometric-shape shape-1"></div>
+        <div class="geometric-shape shape-2"></div>
+        <div class="geometric-shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo-glow"></div>
+            <img src="assets/logo.png" alt="Logo" class="logo" id="logo">
+        </div>
+        
+        <h1 class="title" id="title">Pronto</h1>
+        <!-- <p class="subtitle">Something extraordinary is coming</p> -->
+    </div>
+
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <script>
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 20000);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 3000);
+        
+        // Create initial particles
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createParticle, i * 1000);
+        }
+
+        // Enhanced cursor trail
+        const cursorTrail = document.getElementById('cursorTrail');
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function updateTrail() {
+            trailX += (mouseX - trailX) * 0.1;
+            trailY += (mouseY - trailY) * 0.1;
+            
+            cursorTrail.style.left = trailX - 10 + 'px';
+            cursorTrail.style.top = trailY - 10 + 'px';
+            
+            requestAnimationFrame(updateTrail);
+        }
+
+        updateTrail();
+
+        // Enhanced logo interaction
+        const logo = document.getElementById('logo');
+        
+        logo.addEventListener('mouseenter', () => {
+            logo.style.animation = 'logoFloat 2s ease-in-out infinite, logoRotate 10s linear infinite';
+        });
+        
+        logo.addEventListener('mouseleave', () => {
+            logo.style.animation = 'logoFloat 6s ease-in-out infinite, logoRotate 20s linear infinite';
+        });
+
+        // Title glitch effect on hover
+        const title = document.getElementById('title');
+        let glitchTimeout;
+        
+        title.addEventListener('mouseenter', () => {
+            clearTimeout(glitchTimeout);
+            let glitchCount = 0;
+            
+            const glitch = () => {
+                if (glitchCount < 6) {
+                    title.style.transform = `translateX(${Math.random() * 4 - 2}px) translateY(${Math.random() * 4 - 2}px)`;
+                    glitchCount++;
+                    glitchTimeout = setTimeout(glitch, 50);
+                } else {
+                    title.style.transform = 'translateX(0) translateY(0)';
+                }
+            };
+            
+            glitch();
+        });
+
+        // Parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.geometric-shape');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.5;
+                const x = (mouseX - 0.5) * speed;
+                const y = (mouseY - 0.5) * speed;
+                shape.style.transform += ` translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Logo error handling
+        logo.addEventListener('error', () => {
+            logo.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4)';
+            logo.style.display = 'flex';
+            logo.style.alignItems = 'center';
+            logo.style.justifyContent = 'center';
+            logo.style.fontSize = '4rem';
+            logo.style.color = 'white';
+            logo.textContent = '◆';
+        });
+    </script>
+</body>
+</html>
