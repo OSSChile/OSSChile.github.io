@@ -9,3 +9,7 @@
 - url: https://github.com/JtPerez-Acle/chrono-mind
   domain: [search, ai]
   lang: rust
+
+- url: https://github.com/lmontanares/midas-sheet
+  domain: [finance, data]
+  lang: rust
