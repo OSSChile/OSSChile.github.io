@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenSource Chile</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <style>
         * {
             margin: 0;
@@ -12,345 +14,420 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0a0a0a 100%);
-            min-height: 100vh;
-            overflow: hidden;
-            position: relative;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
         }
 
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo-container {
-            position: relative;
-            margin-bottom: 60px;
-            perspective: 1000px;
+            gap: 20px;
         }
 
         .logo {
-            width: 300px;
-            height: 300px;
+            width: 80px;
+            height: 80px;
             object-fit: contain;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease-in-out infinite, logoFloat 6s ease-in-out infinite, logoRotate 20s linear infinite;
-            box-shadow: 
-                0 0 60px rgba(255, 107, 107, 0.3),
-                0 0 100px rgba(78, 205, 196, 0.2),
-                0 0 140px rgba(69, 183, 209, 0.1),
-                inset 0 0 60px rgba(255, 255, 255, 0.1);
-            filter: blur(0px);
-            transition: all 0.5s ease;
-            transform-style: preserve-3d;
-        }
-
-        .logo:hover {
-            transform: scale(1.1) rotateY(15deg) rotateX(10deg);
-            box-shadow: 
-                0 0 80px rgba(255, 107, 107, 0.5),
-                0 0 120px rgba(78, 205, 196, 0.4),
-                0 0 160px rgba(69, 183, 209, 0.3);
-            filter: blur(0px) brightness(1.2);
-        }
-
-        .logo-glow {
-            position: absolute;
-            top: -50px;
-            left: -50px;
-            right: -50px;
-            bottom: -50px;
-            background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulseGlow 4s ease-in-out infinite;
-            z-index: -1;
         }
 
         .title {
-            font-size: clamp(4rem, 12vw, 12rem);
-            font-weight: 100;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #ffffff, #f0f0f0, #e0e0e0, #ffffff);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: textShimmer 6s ease-in-out infinite, titleFloat 8s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-            position: relative;
-            z-index: 3;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 3rem;
             font-weight: 300;
-            letter-spacing: 0.2em;
-            margin-top: 20px;
-            animation: subtitleFade 3s ease-in-out infinite;
+            color: #f0f6fc;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
         }
 
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: particleFloat 10s linear infinite;
+        .search-section {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .geometric-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .search-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-select {
             width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
         }
 
-        .geometric-shape {
-            position: absolute;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            animation: geometricRotate 30s linear infinite;
+        .search-select:focus {
+            outline: none;
+            border-color: #1f6feb;
+            box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.1);
         }
 
-        .shape-1 {
-            width: 200px;
-            height: 200px;
-            top: 10%;
-            left: 10%;
-            transform: rotate(45deg);
-            animation-delay: 0s;
+        .search-select option {
+            background: #21262d;
+            color: #c9d1d9;
         }
 
-        .shape-2 {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            right: 15%;
-            border-radius: 50%;
-            animation-delay: -10s;
+        .search-label {
+            font-size: 0.9rem;
+            color: #8b949e;
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
         }
 
-        .shape-3 {
-            width: 100px;
-            height: 100px;
-            bottom: 20%;
-            left: 20%;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            animation-delay: -20s;
+        .clear-btn {
+            background: #da3633;
+            border: 1px solid #da3633;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            align-self: flex-end;
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        .clear-btn:hover {
+            background: #b62324;
+            border-color: #b62324;
         }
 
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px) rotateY(0deg); }
-            50% { transform: translateY(-20px) rotateY(5deg); }
+        .repositories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
         }
 
-        @keyframes logoRotate {
-            0% { transform: rotateZ(0deg); }
-            100% { transform: rotateZ(360deg); }
+        .repo-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            transition: border-color 0.2s ease;
         }
 
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.1); }
+        .repo-card:hover {
+            border-color: #8b949e;
         }
 
-        @keyframes textShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        .repo-card.hidden {
+            display: none;
         }
 
-        @keyframes titleFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .repo-image {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: block;
         }
 
-        @keyframes subtitleFade {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 0.9; }
+        .repo-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        @keyframes particleFloat {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        .repo-url {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
-        @keyframes geometricRotate {
-            0% { transform: rotate(0deg); opacity: 0.05; }
-            50% { opacity: 0.1; }
-            100% { transform: rotate(360deg); opacity: 0.05; }
+        .repo-url:hover {
+            text-decoration: underline;
+        }
+
+        .repo-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .domain-tag {
+            background: #1f6feb;
+            color: #fff;
+        }
+
+        .lang-tag {
+            background: #30363d;
+            color: #c9d1d9;
+            border: 1px solid #484f58;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #8b949e;
+            font-size: 1.1rem;
+            margin: 60px 0;
+            display: none;
         }
 
         @media (max-width: 768px) {
-            .logo {
-                width: 200px;
-                height: 200px;
-            }
-            
             .title {
-                font-size: clamp(3rem, 15vw, 8rem);
+                font-size: 2.5rem;
             }
-            
-            .subtitle {
-                font-size: 1rem;
+
+            .logo {
+                width: 60px;
+                height: 60px;
             }
-        }
 
-        .cursor-trail {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, rgba(255, 107, 107, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            animation: cursorPulse 2s ease-in-out infinite;
-        }
+            .repositories {
+                grid-template-columns: 1fr;
+            }
 
-        @keyframes cursorPulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.5); opacity: 0.6; }
+            .search-section {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="geometric-bg">
-        <div class="geometric-shape shape-1"></div>
-        <div class="geometric-shape shape-2"></div>
-        <div class="geometric-shape shape-3"></div>
-    </div>
-
     <div class="container">
-        <div class="logo-container">
-            <div class="logo-glow"></div>
-            <img src="assets/logo.png" alt="Logo" class="logo" id="logo">
+        <div class="header">
+            <img src="assets/logo.png" alt="OpenSource Chile Logo" class="logo">
+            <h1 class="title">OpenSource Chile</h1>
         </div>
-        
-        <h1 class="title" id="title">Pronto</h1>
-        <!-- <p class="subtitle">Something extraordinary is coming</p> -->
+
+        <div class="search-section">
+            <div class="search-group">
+                <label class="search-label" for="domainSearch">Filter by Domain</label>
+                <select id="domainSearch" class="search-select" onchange="filterRepositories()">
+                    <option value="">All domains</option>
+                </select>
+            </div>
+            <div class="search-group">
+                <label class="search-label" for="langSearch">Filter by Language</label>
+                <select id="langSearch" class="search-select" onchange="filterRepositories()">
+                    <option value="">All languages</option>
+                </select>
+            </div>
+            <button class="clear-btn" onclick="clearFilters()">Clear</button>
+        </div>
+
+        <div class="repositories" id="repositories"></div>
+        <div class="no-results" id="noResults">No repositories match your filters</div>
     </div>
 
-    <div class="cursor-trail" id="cursorTrail"></div>
-
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <script>
-        // Create floating particles
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 10 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 20000);
-        }
+        let repositories = [];
 
-        // Create particles periodically
-        setInterval(createParticle, 3000);
-        
-        // Create initial particles
-        for (let i = 0; i < 5; i++) {
-            setTimeout(createParticle, i * 1000);
-        }
+        // Simple YAML parser (for fallback or compatibility, not needed if using js-yaml)
+        function parseYAML(yamlString) {
+            const lines = yamlString.split('\n');
+            const repos = [];
+            let currentRepo = {};
 
-        // Enhanced cursor trail
-        const cursorTrail = document.getElementById('cursorTrail');
-        let mouseX = 0, mouseY = 0;
-        let trailX = 0, trailY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function updateTrail() {
-            trailX += (mouseX - trailX) * 0.1;
-            trailY += (mouseY - trailY) * 0.1;
-            
-            cursorTrail.style.left = trailX - 10 + 'px';
-            cursorTrail.style.top = trailY - 10 + 'px';
-            
-            requestAnimationFrame(updateTrail);
-        }
-
-        updateTrail();
-
-        // Enhanced logo interaction
-        const logo = document.getElementById('logo');
-        
-        logo.addEventListener('mouseenter', () => {
-            logo.style.animation = 'logoFloat 2s ease-in-out infinite, logoRotate 10s linear infinite';
-        });
-        
-        logo.addEventListener('mouseleave', () => {
-            logo.style.animation = 'logoFloat 6s ease-in-out infinite, logoRotate 20s linear infinite';
-        });
-
-        // Title glitch effect on hover
-        const title = document.getElementById('title');
-        let glitchTimeout;
-        
-        title.addEventListener('mouseenter', () => {
-            clearTimeout(glitchTimeout);
-            let glitchCount = 0;
-            
-            const glitch = () => {
-                if (glitchCount < 6) {
-                    title.style.transform = `translateX(${Math.random() * 4 - 2}px) translateY(${Math.random() * 4 - 2}px)`;
-                    glitchCount++;
-                    glitchTimeout = setTimeout(glitch, 50);
-                } else {
-                    title.style.transform = 'translateX(0) translateY(0)';
+            lines.forEach(line => {
+                const trimmed = line.trim();
+                if (trimmed.startsWith('- url:')) {
+                    if (Object.keys(currentRepo).length > 0) {
+                        repos.push(currentRepo);
+                    }
+                    currentRepo = {
+                        url: trimmed.substring(6).trim()
+                    };
+                } else if (trimmed.startsWith('domain:')) {
+                    const domainStr = trimmed.substring(7).trim();
+                    currentRepo.domain = domainStr.replace(/[\[\]]/g, '').split(',').map(d => d.trim());
+                } else if (trimmed.startsWith('lang:')) {
+                    currentRepo.lang = trimmed.substring(5).trim();
                 }
-            };
-            
-            glitch();
-        });
-
-        // Parallax effect
-        document.addEventListener('mousemove', (e) => {
-            const shapes = document.querySelectorAll('.geometric-shape');
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            shapes.forEach((shape, index) => {
-                const speed = (index + 1) * 0.5;
-                const x = (mouseX - 0.5) * speed;
-                const y = (mouseY - 0.5) * speed;
-                shape.style.transform += ` translate(${x}px, ${y}px)`;
             });
-        });
 
-        // Logo error handling
-        logo.addEventListener('error', () => {
-            logo.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4)';
-            logo.style.display = 'flex';
-            logo.style.alignItems = 'center';
-            logo.style.justifyContent = 'center';
-            logo.style.fontSize = '4rem';
-            logo.style.color = 'white';
-            logo.textContent = '◆';
-        });
+            if (Object.keys(currentRepo).length > 0) {
+                repos.push(currentRepo);
+            }
+
+            return repos;
+        }
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function extractRepoInfo(url) {
+            const match = url.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+            return match ? { owner: match[1], repo: match[2] } : null;
+        }
+
+        function populateFilters() {
+            const domains = new Set();
+            const languages = new Set();
+
+            repositories.forEach(repo => {
+                if (repo.domain && Array.isArray(repo.domain)) {
+                    repo.domain.forEach(domain => domains.add(domain));
+                }
+                if (repo.lang) {
+                    languages.add(repo.lang);
+                }
+            });
+
+            const domainSelect = document.getElementById('domainSearch');
+            const langSelect = document.getElementById('langSearch');
+
+            // Clear existing options (keep the "All" option)
+            domainSelect.innerHTML = '<option value="">All domains</option>';
+            langSelect.innerHTML = '<option value="">All languages</option>';
+
+            // Add domain options
+            [...domains].sort().forEach(domain => {
+                const option = document.createElement('option');
+                option.value = domain;
+                option.textContent = domain;
+                domainSelect.appendChild(option);
+            });
+
+            // Add language options
+            [...languages].sort().forEach(lang => {
+                const option = document.createElement('option');
+                option.value = lang;
+                option.textContent = lang;
+                langSelect.appendChild(option);
+            });
+        }
+
+        function clearFilters() {
+            document.getElementById('domainSearch').value = '';
+            document.getElementById('langSearch').value = '';
+            filterRepositories();
+        }
+
+        function filterRepositories() {
+            const domainQuery = document.getElementById('domainSearch').value;
+            const langQuery = document.getElementById('langSearch').value;
+
+            const cards = document.querySelectorAll('.repo-card');
+            const noResults = document.getElementById('noResults');
+            let visibleCount = 0;
+
+            cards.forEach((card, index) => {
+                const repo = repositories[index];
+                let shouldShow = true;
+
+                if (domainQuery && !repo.domain.includes(domainQuery)) {
+                    shouldShow = false;
+                }
+
+                if (langQuery && repo.lang !== langQuery) {
+                    shouldShow = false;
+                }
+
+                if (shouldShow) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        function createRepoCard(repoData) {
+            const repoInfo = extractRepoInfo(repoData.url);
+            if (!repoInfo) return null;
+
+            const card = document.createElement('div');
+            card.className = 'repo-card';
+
+            const imageUrl = `https://gh-card.dev/repos/${repoInfo.owner}/${repoInfo.repo}.svg`;
+
+            card.innerHTML = `
+                <img src="${imageUrl}" alt="${repoInfo.repo}" class="repo-image" onerror="this.style.display='none'">
+                <div class="repo-info">
+                    <a href="${repoData.url}" target="_blank" class="repo-url">
+                        ${repoInfo.owner}/${repoInfo.repo}
+                    </a>
+                    <div class="repo-tags">
+                        ${repoData.domain.map(domain => `<span class="tag domain-tag">${domain}</span>`).join('')}
+                        <span class="tag lang-tag">${repoData.lang}</span>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function renderRepositories() {
+            const container = document.getElementById('repositories');
+            container.innerHTML = ''; // Clear previous
+            repositories.forEach(repoData => {
+                const card = createRepoCard(repoData);
+                if (card) {
+                    container.appendChild(card);
+                }
+            });
+        }
+
+        function loadAndInit() {
+            fetch('assets/data.yaml')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(yamlText => {
+                    // Use js-yaml if available, fallback to simple parser if needed
+                    repositories = typeof jsyaml !== 'undefined'
+                        ? jsyaml.load(yamlText)
+                        : parseYAML(yamlText);
+
+                    // Randomize the order of repositories
+                    repositories = shuffleArray(repositories);
+
+                    renderRepositories();
+                    populateFilters(); // Populate dropdowns with available options
+                })
+                .catch(error => {
+                    console.error('Failed to load YAML data:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAndInit);
     </script>
+
 </body>
+
 </html>
