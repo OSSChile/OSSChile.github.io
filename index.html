@@ -401,7 +401,7 @@
         }
 
         function loadAndInit() {
-            fetch('assets/data.yaml')
+            fetch('data.yaml')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! Status: ${response.status}`);
