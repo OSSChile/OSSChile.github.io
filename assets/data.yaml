@@ -12,4 +12,4 @@
 
 - url: https://github.com/lmontanares/midas-sheet
   domain: [finance, data]
-  lang: rust
+  lang: python
