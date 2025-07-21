@@ -13,3 +13,7 @@
 - url: https://github.com/lmontanares/midas-sheet
   domain: [finance, data]
   lang: python
+
+- url: https://github.com/DashAISoftware/DashAI/
+  domain: [ai, gui]
+  lang: python
