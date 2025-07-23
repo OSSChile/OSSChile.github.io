@@ -17,3 +17,7 @@
 - url: https://github.com/DashAISoftware/DashAI/
   domain: [ai, gui]
   lang: python
+
+- url: https://github.com/OneFolderApp/OneFolder
+  domain: [photo, app, desktop]
+  lang: typescript
