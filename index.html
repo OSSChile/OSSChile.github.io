@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +13,9 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0d1117;
-            color: #c9d1d9;
+            font-family: monospace;
+            background: #161616;
+            color: #c9f0d1;
             line-height: 1.6;
         }
 
@@ -29,24 +28,21 @@
         .header {
             text-align: center;
             margin-bottom: 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
+            width: 100px;
+            height: 100px;
         }
 
         .title {
             font-size: 3rem;
-            font-weight: 300;
-            color: #f0f6fc;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
+            color: #00d331;
+            margin: 20px 0;
+        }
+
+        .title .white {
+            color: #fff;
         }
 
         .community-links {
@@ -58,28 +54,26 @@
         }
 
         .community-link {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 8px;
-            background: #21262d;
-            border: 1px solid #30363d;
-            color: #c9d1d9;
+            background: #222;
+            border: 1px solid #00d331;
+            color: #c9f0d1;
             text-decoration: none;
             padding: 10px 16px;
             border-radius: 6px;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
         }
 
         .community-link:hover {
-            background: #30363d;
-            border-color: #8b949e;
-            text-decoration: none;
+            background: #333;
+            border-color: #00ff3e;
         }
 
         .discord-link {
             border-color: #5865f2;
             background: rgba(88, 101, 242, 0.1);
+            color: #fff;
         }
 
         .discord-link:hover {
@@ -88,13 +82,14 @@
         }
 
         .github-link {
-            border-color: #238636;
-            background: rgba(35, 134, 54, 0.1);
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
         }
 
         .github-link:hover {
-            background: rgba(35, 134, 54, 0.2);
-            border-color: #238636;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #fff;
         }
 
         .search-section {
@@ -115,50 +110,44 @@
 
         .search-select {
             width: 100%;
-            background: #21262d;
-            border: 1px solid #30363d;
-            color: #c9d1d9;
+            background: #222;
+            border: 1px solid #00d331;
+            color: #c9f0d1;
             padding: 10px 12px;
             border-radius: 6px;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
             cursor: pointer;
         }
 
         .search-select:focus {
             outline: none;
-            border-color: #1f6feb;
-            box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.1);
+            border-color: #00ff3e;
         }
 
         .search-select option {
-            background: #21262d;
-            color: #c9d1d9;
+            background: #222;
+            color: #c9f0d1;
         }
 
         .search-label {
-            font-size: 0.9rem;
-            color: #8b949e;
-            font-weight: 500;
+            color: #00d331;
             margin-bottom: 8px;
             display: block;
         }
 
         .clear-btn {
-            background: #da3633;
-            border: 1px solid #da3633;
-            color: #fff;
+            background: #00d331;
+            border: 1px solid #00d331;
+            color: #161616;
             padding: 10px 20px;
             border-radius: 6px;
-            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.2s ease;
             align-self: flex-end;
+            font-weight: 600;
         }
 
         .clear-btn:hover {
-            background: #b62324;
-            border-color: #b62324;
+            background: #00ff3e;
+            border-color: #00ff3e;
         }
 
         .repositories {
@@ -168,15 +157,14 @@
         }
 
         .repo-card {
-            background: #161b22;
-            border: 1px solid #30363d;
+            background: #222;
+            border: 1px solid #333;
             border-radius: 8px;
             padding: 20px;
-            transition: border-color 0.2s ease;
         }
 
         .repo-card:hover {
-            border-color: #8b949e;
+            border-color: #00d331;
         }
 
         .repo-card.hidden {
@@ -185,10 +173,8 @@
 
         .repo-image {
             width: 100%;
-            height: auto;
             border-radius: 4px;
             margin-bottom: 15px;
-            display: block;
         }
 
         .repo-info {
@@ -198,7 +184,7 @@
         }
 
         .repo-url {
-            color: #58a6ff;
+            color: #00ff3e;
             text-decoration: none;
             font-size: 1.1rem;
             font-weight: 500;
@@ -223,19 +209,20 @@
         }
 
         .domain-tag {
-            background: #1f6feb;
-            color: #fff;
+            background: #00d331;
+            color: #161616;
+            font-weight: 600;
         }
 
         .lang-tag {
-            background: #30363d;
-            color: #c9d1d9;
-            border: 1px solid #484f58;
+            background: #333;
+            color: #c9f0d1;
+            border: 1px solid #555;
         }
 
         .no-results {
             text-align: center;
-            color: #8b949e;
+            color: #00d331;
             font-size: 1.1rem;
             margin: 60px 0;
             display: none;
@@ -270,8 +257,7 @@
                 flex-direction: column;
                 align-items: center;
                 max-width: 280px;
-                margin-left: auto;
-                margin-right: auto;
+                margin: 0 auto;
             }
 
             .community-link {
@@ -286,8 +272,7 @@
     <div class="container">
         <div class="header">
             <img src="assets/logo.png" alt="OpenSource Chile Logo" class="logo">
-            <h1 class="title">OpenSource Chile</h1>
-            
+            <h1 class="title">OpenSource <span class="white">Chile</span></h1>
             <div class="community-links">
                 <a href="https://discord.gg/nNS2nT6WpM" target="_blank" class="community-link discord-link">
                     <svg class="icon" viewBox="0 0 24 24">
@@ -303,7 +288,6 @@
                 </a>
             </div>
         </div>
-
         <div class="search-section">
             <div class="search-group">
                 <label class="search-label" for="domainSearch">Filter by Domain</label>
@@ -319,9 +303,12 @@
             </div>
             <button class="clear-btn" onclick="clearFilters()">Clear</button>
         </div>
-
         <div class="repositories" id="repositories"></div>
         <div class="no-results" id="noResults">No repositories match your filters</div>
+        
+        <div style="text-align: center; margin-top: 60px;">
+            <img src="https://i.redd.it/mdzvpg661j1c1.gif" alt="Pudu" style="max-width: 50%; height: 50%; border-radius: 8px;">
+        </div>
     </div>
 
     <script>
@@ -335,12 +322,8 @@
             lines.forEach(line => {
                 const trimmed = line.trim();
                 if (trimmed.startsWith('- url:')) {
-                    if (Object.keys(currentRepo).length > 0) {
-                        repos.push(currentRepo);
-                    }
-                    currentRepo = {
-                        url: trimmed.substring(6).trim()
-                    };
+                    if (Object.keys(currentRepo).length > 0) repos.push(currentRepo);
+                    currentRepo = { url: trimmed.substring(6).trim() };
                 } else if (trimmed.startsWith('domain:')) {
                     const domainStr = trimmed.substring(7).trim();
                     currentRepo.domain = domainStr.replace(/[\[\]]/g, '').split(',').map(d => d.trim());
@@ -349,10 +332,7 @@
                 }
             });
 
-            if (Object.keys(currentRepo).length > 0) {
-                repos.push(currentRepo);
-            }
-
+            if (Object.keys(currentRepo).length > 0) repos.push(currentRepo);
             return repos;
         }
 
@@ -378,19 +358,15 @@
                 if (repo.domain && Array.isArray(repo.domain)) {
                     repo.domain.forEach(domain => domains.add(domain));
                 }
-                if (repo.lang) {
-                    languages.add(repo.lang);
-                }
+                if (repo.lang) languages.add(repo.lang);
             });
 
             const domainSelect = document.getElementById('domainSearch');
             const langSelect = document.getElementById('langSearch');
 
-            // Clear existing options (keep the "All" option)
             domainSelect.innerHTML = '<option value="">All domains</option>';
             langSelect.innerHTML = '<option value="">All languages</option>';
 
-            // Add domain options
             [...domains].sort().forEach(domain => {
                 const option = document.createElement('option');
                 option.value = domain;
@@ -398,7 +374,6 @@
                 domainSelect.appendChild(option);
             });
 
-            // Add language options
             [...languages].sort().forEach(lang => {
                 const option = document.createElement('option');
                 option.value = lang;
@@ -416,7 +391,6 @@
         function filterRepositories() {
             const domainQuery = document.getElementById('domainSearch').value;
             const langQuery = document.getElementById('langSearch').value;
-
             const cards = document.querySelectorAll('.repo-card');
             const noResults = document.getElementById('noResults');
             let visibleCount = 0;
@@ -425,13 +399,8 @@
                 const repo = repositories[index];
                 let shouldShow = true;
 
-                if (domainQuery && !repo.domain.includes(domainQuery)) {
-                    shouldShow = false;
-                }
-
-                if (langQuery && repo.lang !== langQuery) {
-                    shouldShow = false;
-                }
+                if (domainQuery && !repo.domain.includes(domainQuery)) shouldShow = false;
+                if (langQuery && repo.lang !== langQuery) shouldShow = false;
 
                 if (shouldShow) {
                     card.classList.remove('hidden');
@@ -450,7 +419,6 @@
 
             const card = document.createElement('div');
             card.className = 'repo-card';
-
             const imageUrl = `https://gh-card.dev/repos/${repoInfo.owner}/${repoInfo.repo}.svg`;
 
             card.innerHTML = `
@@ -471,36 +439,25 @@
 
         function renderRepositories() {
             const container = document.getElementById('repositories');
-            container.innerHTML = ''; // Clear previous
+            container.innerHTML = '';
             repositories.forEach(repoData => {
                 const card = createRepoCard(repoData);
-                if (card) {
-                    container.appendChild(card);
-                }
+                if (card) container.appendChild(card);
             });
         }
 
         function loadAndInit() {
             fetch('data.yaml')
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                     return response.text();
                 })
                 .then(yamlText => {
-                    // Use js-yaml if available, fallback to simple parser if needed
-                    repositories = parseYAML(yamlText);
-
-                    // Randomize the order of repositories
-                    repositories = shuffleArray(repositories);
-
+                    repositories = shuffleArray(parseYAML(yamlText));
                     renderRepositories();
-                    populateFilters(); // Populate dropdowns with available options
+                    populateFilters();
                 })
-                .catch(error => {
-                    console.error('Failed to load YAML data:', error);
-                });
+                .catch(error => console.error('Failed to load YAML data:', error));
         }
 
         document.addEventListener('DOMContentLoaded', loadAndInit);
