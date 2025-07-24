@@ -21,3 +21,7 @@
 - url: https://github.com/OneFolderApp/OneFolder
   domain: [photo, app, desktop]
   lang: typescript
+
+- url: https://github.com/Framebuffers/Direwolf
+  domain: [data, desktop]
+  lang: csharp
