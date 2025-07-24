@@ -324,11 +324,9 @@
         <div class="no-results" id="noResults">No repositories match your filters</div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <script>
         let repositories = [];
 
-        // Simple YAML parser (for fallback or compatibility, not needed if using js-yaml)
         function parseYAML(yamlString) {
             const lines = yamlString.split('\n');
             const repos = [];
@@ -492,9 +490,7 @@
                 })
                 .then(yamlText => {
                     // Use js-yaml if available, fallback to simple parser if needed
-                    repositories = typeof jsyaml !== 'undefined'
-                        ? jsyaml.load(yamlText)
-                        : parseYAML(yamlText);
+                    repositories = parseYAML(yamlText);
 
                     // Randomize the order of repositories
                     repositories = shuffleArray(repositories);
