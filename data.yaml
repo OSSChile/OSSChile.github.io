@@ -25,3 +25,7 @@
 - url: https://github.com/Framebuffers/Direwolf
   domain: [data, desktop]
   lang: csharp
+
+- url: https://github.com/a-chacon/oas_rails
+  domain: [api, documentation]
+  lang: ruby
