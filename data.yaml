@@ -29,3 +29,7 @@
 - url: https://github.com/a-chacon/oas_rails
   domain: [api, documentation]
   lang: ruby
+
+- url: https://github.com/Framebuffers/mindhunter
+  domain: [data, statistics]
+  lang: python
