@@ -4,7 +4,7 @@
 </div>
 
 <div align="center" style="display: flex; align-items: center; gap: 10px;">
-  <h1>🇨🇱 <a href="osschile.lat">OSSChile</a></h1>
+  <h1>🇨🇱 <a href="https://osschile.lat">OSSChile</a></h1>
   <img src="https://img.shields.io/github/actions/workflow/status/OSSChile/OSSChile.github.io/pages%2Fpages-build-deployment" alt="GitHub Actions Workflow Status">
 </div>
 
