@@ -33,3 +33,11 @@
 - url: https://github.com/Framebuffers/mindhunter
   domain: [data, statistics]
   lang: python
+
+- url: https://github.com/alonsosilvaallende/litelines
+  domain: [ai, nlp]
+  lang: python
+  
+- url: https://github.com/boquila/ocrisp
+  domain: [ai, rag]
+  lang: rust
