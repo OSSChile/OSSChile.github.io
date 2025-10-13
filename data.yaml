@@ -41,3 +41,7 @@
 - url: https://github.com/boquila/ocrisp
   domain: [ai, rag]
   lang: rust
+  
+- url: https://github.com/Vokturz/loyca-ai
+  domain: [ai, desktop, assistant, privacy]
+  lang: rust, typescript
